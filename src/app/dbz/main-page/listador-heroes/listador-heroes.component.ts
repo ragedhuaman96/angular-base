@@ -9,9 +9,4 @@ import { Hero } from '../main-page.component';
 
 export class ListadorHeroesComponent {
   @Input() data: Hero[] = []
-  @Input() addHero: any;
-
-  addCharacter(){
-    this.addHero()
-  }
 }

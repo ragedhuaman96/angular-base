@@ -11,6 +11,11 @@ export interface Hero{
   styleUrls: ['./main-page.component.css']
 })
 export class MainPageComponent {
+  public nuevo:Hero = {
+    name:"",
+    power:""
+  }
+
   public heros: Hero[] = [
     {
       name: "Goku",
@@ -22,7 +27,7 @@ export class MainPageComponent {
     }
   ]
 
-  addHero(elem:Hero){
-    this.heros.push(elem)
+  agregarCharacter(event:Hero){
+    this.heros.push(event)
   }
 }

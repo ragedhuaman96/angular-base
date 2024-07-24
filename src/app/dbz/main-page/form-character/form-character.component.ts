@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Hero } from '../main-page.component';
 
 @Component({
   selector: 'app-form-character',
@@ -6,7 +7,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./form-character.component.css']
 })
 export class FormCharacterComponent {
+  @Input() nuevo:any = {
+    name: '',
+    power: ''
+  }
+  @Output() onNewHero: EventEmitter<Hero> = new EventEmitter<Hero>()
+  // @Input() data:Hero[] = []
+
   agregar(){
-    console.log('Heyyy !!!')
+    this.onNewHero.emit(this.nuevo)
+
+    this.nuevo = {
+      name: '',
+      power: ''
+    }
   }
 }
