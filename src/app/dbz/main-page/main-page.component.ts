@@ -1,9 +1,6 @@
 import { Component } from '@angular/core';
-
-export interface Hero{
-  name:string;
-  power:string
-}
+import { Hero } from 'src/app/interfaces/hero.interface';
+import { HerosService } from 'src/app/services/dbz.service';
 
 @Component({
   selector: 'app-main-page',
@@ -16,18 +13,20 @@ export class MainPageComponent {
     power:""
   }
 
-  public heros: Hero[] = [
-    {
-      name: "Goku",
-      power: '15000'
-    },
-    {
-      name: "Krillin",
-      power: "700"
-    }
-  ]
+  constructor (
+    private herosService: HerosService
+  ){
+  }
 
-  agregarCharacter(event:Hero){
-    this.heros.push(event)
+  get heros(): Hero[] {
+    return [...this.herosService.heros]
+  }
+
+  onDeleteHero(id:string){
+    this.herosService.deleteCharacter(id)
+  }
+
+  addHero(hero:Hero){
+    this.herosService.agregarCharacter(hero)
   }
 }
